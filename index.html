@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This is tip-calculator</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            color: white;
+        }
+
+        body {
+            background: #8990ec;
+            ;
+        }
+
+        .wrapper {
+            width: 356px;
+            height: 546px;
+            background: #272639;
+            border-radius: 1.5rem;
+            margin: 100px auto;
+            padding: 1.2rem;
+        }
+
+        .title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        #topContainer {
+            margin-top: 4rem;
+        }
+
+        .container {
+            margin-top: 2rem;
+        }
+
+        .inputContainer {
+            background: #353959;
+            width: 80%;
+            border-radius: 1.5rem;
+            padding: 0.4rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        #inpInside,
+        #tipInside {
+            border: none;
+            background: none;
+            outline: none;
+            font-size: 1.2rem;
+        }
+
+        #bottomContainer {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .totalPersonDiv{
+            display: flex;
+            justify-content: end;
+        }
+        .totalPersonDiv{
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .buttonContainer{
+           background: #8990ec;
+           border-radius: 50%;
+        }
+        .control{
+            display: flex;
+            align-items: center;
+        }
+        #increment,#decrement{
+            width: 2rem;
+            height: 2rem;
+            background: none;
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
+        #value{
+            margin:0 0.5rem;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container" id="topContainer">
+            <div class="title">Bill Amount</div>
+            <div class="inputContainer">
+                <span>$</span>
+                <input type="text" id="inpInside" onkeyup="calculateBill()" placeholder="0">
+            </div>
+        </div>
+        <div class="container">
+            <div class="title">Tip</div>
+            <div class="inputContainer">
+                <span>$</span>
+                <input type="text" id="tipInside" onkeyup="calculateBill()" placeholder="0">
+            </div>
+        </div>
+        <div class="container" id="bottomContainer">
+            <div class="people">
+                <div class="title">People</div>
+                <div class="control">
+                    <span class="buttonContainer">
+                        <button id="increment" onclick="increase()">+</button>
+                    </span>
+                    <span id="value">1</span>
+                    <span class="buttonContainer">
+                        <button id="decrement" onclick="decrease()">-</button>
+                    </span>
+                </div>
+               
+
+            </div>
+            <div class="TotalPerson">
+                <div class="title">Total Amount</div>
+                <div class="totalPersonDiv"><span id="totalValue">00.00</span></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let inpBill = document.getElementById("inpInside");
+        let tipBill = document.getElementById("tipInside");
+        let totalAmountDiv = document.getElementById("totalValue");
+        let numberOfPeople = Number(value.innerText);
+        const calculateBill= ()=>{
+            let numBill = Number(inpBill.value);
+            let numTip = Number(tipBill.value);
+            let amount = (numBill+numTip)/numberOfPeople;
+            totalAmountDiv.innerText = `$${amount}`;
+        }
+        let incre = document.getElementById("increment");
+        let decre = document.getElementById("decrement");
+        const increase =()=>{
+            numberOfPeople+=1;
+            calculateBill();
+        }
+        const decrease = () =>{
+            if(numberOfPeople<=1){
+                return 0;
+            }
+            numberOfPeople-=1;
+            calculateBill();
+        }
+       
+    </script>
+</body>
+
+</html>
